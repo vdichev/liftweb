@@ -47,7 +47,7 @@ trait ToResponse {
 
           new HttpResponse(baseUrl,
             responseCode, getter.getStatusText,
-            respHeaders, readWholeStream(getter.getResponseBodyAsStream),
+            respHeaders, getter.getResponseBody,
             httpClient)
       }
     } catch {
@@ -75,7 +75,7 @@ trait ToBoxHttpResponse {
         
         Full(new HttpResponse(baseUrl,
                               responseCode, getter.getStatusText,
-                              respHeaders, readWholeStream(getter.getResponseBodyAsStream),
+                              respHeaders, getter.getResponseBody,
                               httpClient))
       }
     } catch {
